@@ -1,0 +1,846 @@
+<title>Yahia Abdullah</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,800&family=Manrope:wght@400;500;600;700&display=swap">
+
+<style>
+/* Layout: sticky nav, dark hero with grid, card sections, timeline experience */
+:root {
+  --bg: #FAFAF7;
+  --bg-alt: #F0EFE9;
+  --fg: #1B1B2F;
+  --fg-muted: #5C5C72;
+  --accent: #B87514;
+  --accent-soft: rgba(184, 117, 20, 0.1);
+  --border: #D8D5CC;
+  --surface: #FFFFFF;
+  --hero-bg: #1B1B2F;
+  --hero-fg: #F0EFE9;
+  --hero-accent: #E0A050;
+  --hero-muted: #8B8FA0;
+  --tag-bg: #EDEAE2;
+  --tag-fg: #3A3A52;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111118;
+    --bg-alt: #1A1A24;
+    --fg: #E4E2DC;
+    --fg-muted: #8B8FA0;
+    --accent: #E0A050;
+    --accent-soft: rgba(224, 160, 80, 0.12);
+    --border: #2E2E3E;
+    --surface: #1E1E2C;
+    --hero-bg: #0A0A12;
+    --hero-fg: #E4E2DC;
+    --hero-accent: #E0A050;
+    --hero-muted: #6E7082;
+    --tag-bg: #252536;
+    --tag-fg: #C8C6C0;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111118;
+  --bg-alt: #1A1A24;
+  --fg: #E4E2DC;
+  --fg-muted: #8B8FA0;
+  --accent: #E0A050;
+  --accent-soft: rgba(224, 160, 80, 0.12);
+  --border: #2E2E3E;
+  --surface: #1E1E2C;
+  --hero-bg: #0A0A12;
+  --hero-fg: #E4E2DC;
+  --hero-accent: #E0A050;
+  --hero-muted: #6E7082;
+  --tag-bg: #252536;
+  --tag-fg: #C8C6C0;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: var(--hero-bg);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+.gutter {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  background: var(--hero-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 14px;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--hero-fg);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--hero-muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--hero-accent); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-block: 72px 64px;
+  position: relative;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hero-accent);
+  margin-bottom: 18px;
+  padding: 5px 14px;
+  border: 1px solid rgba(224,160,80,0.25);
+  border-radius: 4px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0 0 12px;
+}
+
+.hero h1 span { color: var(--hero-accent); }
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--hero-muted);
+  margin: 0 0 32px;
+  max-width: 540px;
+  line-height: 1.55;
+}
+
+.hero-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 0.85rem;
+  color: var(--hero-muted);
+  margin-bottom: 40px;
+}
+
+.hero-contact a {
+  color: var(--hero-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero-contact a:hover { color: var(--hero-accent); }
+
+.hero-contact svg {
+  width: 15px;
+  height: 15px;
+  vertical-align: -2px;
+  margin-right: 5px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 640px;
+}
+
+.stat {
+  background: rgba(255,255,255,0.03);
+  padding: 20px 18px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--hero-accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--hero-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── SECTIONS ── */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-block: 56px;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+section h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.7rem;
+  margin: 0 0 24px;
+  letter-spacing: -0.015em;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ── ABOUT ── */
+.about-text {
+  max-width: 660px;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--fg-muted);
+}
+
+.about-text strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.skill-group h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 10px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 4px 11px;
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.skill-tag.hl {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── EXPERIENCE ── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--border);
+}
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 22px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.tl-content h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0 0 2px;
+  letter-spacing: -0.01em;
+}
+
+.tl-company {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.tl-meta {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  margin-bottom: 10px;
+}
+
+.tl-desc {
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.tl-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tl-bullets li {
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.tl-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+.tl-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.tl-tech span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 3px;
+}
+
+/* ── EDUCATION ── */
+.edu-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px 28px;
+  max-width: 460px;
+}
+
+.edu-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+}
+
+.edu-card p {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 0.88rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--hero-bg);
+  color: var(--hero-muted);
+  margin-top: 16px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-block: 40px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--hero-fg);
+  margin-bottom: 6px;
+}
+
+.footer-tagline {
+  font-size: 0.82rem;
+  color: var(--hero-muted);
+  max-width: 320px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: var(--hero-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--hero-accent); }
+
+.footer-bottom {
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .hero-inner { padding-block: 48px 42px; }
+  .hero h1 { font-size: 2.2rem; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  section { padding-block: 40px; }
+  section h2 { font-size: 1.4rem; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .tl-item { grid-template-columns: 12px 1fr; gap: 14px; }
+  .timeline::before { left: 5px; }
+  .tl-dot { width: 12px; height: 12px; border-width: 2.5px; }
+  .edu-card { padding: 20px 18px; }
+  .footer-inner { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0s !important; }
+}
+
+html { scroll-behavior: smooth; }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+</style>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner gutter">
+    <a href="#" class="nav-brand">YA</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner gutter">
+    <div class="hero-label">Senior Backend Engineer</div>
+    <h1>Yahia<br><span>Abdullah</span></h1>
+    <p class="hero-subtitle">Software Architect building distributed systems for TravelTech, Logistics, and EdTech. Currently architecting a multi-service OTA platform at Checkin4u with Go and Laravel.</p>
+
+    <div class="hero-contact">
+      <span>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Cairo, Egypt
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        yahiafcih2014@gmail.com
+      </span>
+      <a href="https://linkedin.com/in/yahia-abdullah-981b46113" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">7+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">$3M+</div>
+        <div class="stat-label">Monthly Revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">5M+</div>
+        <div class="stat-label">Daily Searches</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">99.9%</div>
+        <div class="stat-label">Uptime</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="gutter">
+  <div class="section-label">About</div>
+  <h2>Professional Summary</h2>
+  <p class="about-text">
+    <strong>7+ years</strong> building backend systems for travel, logistics, and education. Currently architecting <strong>Checkin4u</strong> — a multi-service OTA with a Go integration engine and Laravel modular monolith. Previously built <strong>Tripklik's</strong> SaaS travel platform ($3M+/mo revenue, 5M+ daily searches). Focused on <strong>distributed systems</strong>, payment integrations, and cloud-native architecture.
+  </p>
+</section>
+
+<hr class="divider gutter">
+
+<!-- SKILLS -->
+<section id="skills" class="gutter">
+  <div class="section-label">Expertise</div>
+  <h2>Core Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <div class="skill-tags">
+        <span class="skill-tag hl">Go</span>
+        <span class="skill-tag hl">PHP</span>
+        <span class="skill-tag hl">Python</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Bash</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Architecture & Patterns</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">DDD</span>
+        <span class="skill-tag">Event-Driven</span>
+        <span class="skill-tag">Multi-tenant SaaS</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Saga</span>
+        <span class="skill-tag">Outbox</span>
+        <span class="skill-tag">State Machine</span>
+        <span class="skill-tag">Factory</span>
+        <span class="skill-tag">Repository</span>
+        <span class="skill-tag">MVCC</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Databases</h3>
+      <div class="skill-tags">
+        <span class="skill-tag hl">PostgreSQL</span>
+        <span class="skill-tag hl">MySQL</span>
+        <span class="skill-tag hl">MongoDB</span>
+        <span class="skill-tag">Redis</span>
+        <span class="skill-tag">Meilisearch</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Infrastructure</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS (EC2/ECR)</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Docker Swarm</span>
+        <span class="skill-tag">Nginx</span>
+        <span class="skill-tag">Cloudflare</span>
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">Bitbucket Pipelines</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Payments</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Stripe</span>
+        <span class="skill-tag">Checkout.com</span>
+        <span class="skill-tag">Tabby</span>
+        <span class="skill-tag">Tap</span>
+        <span class="skill-tag">Payfort</span>
+        <span class="skill-tag">Paymob</span>
+        <span class="skill-tag">MyFatoorah</span>
+        <span class="skill-tag">Apple Pay</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Travel APIs</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Amadeus</span>
+        <span class="skill-tag">Sabre</span>
+        <span class="skill-tag">Travelport</span>
+        <span class="skill-tag">Hotelbeds</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider gutter">
+
+<!-- EXPERIENCE -->
+<section id="experience" class="gutter">
+  <div class="section-label">Career</div>
+  <h2>Experience</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Senior Software Engineer & Architect</h3>
+        <div class="tl-meta"><span class="tl-company">Checkin4u</span> · Sep 2024 – Present · Cairo, Egypt</div>
+        <p class="tl-desc">OTA platform with a Go integrations service + Laravel modular monolith, serving B2B/B2C flight and hotel bookings.</p>
+        <ul class="tl-bullets">
+          <li>Built Go integration engine — concurrent fan-out to suppliers (Amadeus, Hotelbeds) with per-provider timeouts and partial-failure handling</li>
+          <li>Architected Laravel backend (PHP 8.4) with domain modules: Flight, Hotel, Order, Payment, Currency, Geo</li>
+          <li>Integrated 7+ payment gateways (Stripe, Checkout.com, Tap, Payfort, Paymob, MyFatoorah, Geidea)</li>
+          <li>Order lifecycle with dual state machines (order-level + product-level) and shadow order flow</li>
+          <li>Hotel search: geo-based queries, Redis offer caching, multi-currency pricing, CheckRate availability</li>
+          <li>Amadeus WS via SOAP/WS-Security — multi-PCC concurrent search + informative pricing</li>
+          <li>Provider log system — records all supplier HTTP exchanges with auto credential redaction</li>
+          <li>Docker Compose orchestration: Nginx reverse proxy, PostgreSQL, Redis, Meilisearch</li>
+        </ul>
+        <div class="tl-tech">
+          <span>Go</span><span>Laravel</span><span>PostgreSQL</span><span>Redis</span><span>Meilisearch</span><span>Docker</span><span>Nginx</span><span>React</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Senior Software Engineer & Architect</h3>
+        <div class="tl-meta"><span class="tl-company">Tripklik</span> · Aug 2022 – Aug 2024 · Cairo, Egypt</div>
+        <p class="tl-desc">White-label SaaS travel platform — $3M+/mo revenue, 10K+ monthly bookings across B2B/B2C.</p>
+        <ul class="tl-bullets">
+          <li>Search infra handling 5M+ daily queries across Amadeus, Sabre, and Travelport</li>
+          <li>Reduced API response time 40% via query optimization, indexing, and Redis caching</li>
+          <li>Eliminated race conditions with pessimistic row-level locking on MySQL/InnoDB</li>
+          <li>Migrated to Docker Swarm on AWS EC2 — zero-downtime rolling deploys via ECR pipelines</li>
+          <li>MySQL GTID replication + Laravel read/write splitting for read-heavy workloads</li>
+          <li>State machine for order lifecycle with channel-aware dispatching (B2B/B2C/Corporate)</li>
+          <li>Multi-currency pricing engine with configurable markup and live FX conversion</li>
+          <li>Integrated 6+ gateways incl. Stripe, Checkout.com, Tabby (BNPL), Apple Pay</li>
+          <li>Unified GDS abstraction for flights, hotels, and ancillaries</li>
+        </ul>
+        <div class="tl-tech">
+          <span>Laravel</span><span>FastAPI</span><span>MySQL</span><span>MongoDB</span><span>Redis</span><span>Docker Swarm</span><span>AWS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Technical Lead</h3>
+        <div class="tl-meta"><span class="tl-company">Eyedel (Tripklik shipping)</span> · Aug 2022 – Aug 2024 · Cairo, Egypt</div>
+        <ul class="tl-bullets">
+          <li>Provider-agnostic integration layer for DHL, Aramex, Mylerz, J&T, Boosta</li>
+          <li>Flexible rate sheet system — global and per-merchant pricing rules</li>
+          <li>Webhook pipeline for real-time shipment tracking</li>
+          <li>Led 3 backend devs — code reviews, mentoring, architecture decisions</li>
+        </ul>
+        <div class="tl-tech">
+          <span>Laravel</span><span>FastAPI</span><span>MySQL</span><span>Redis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Senior Software Engineer</h3>
+        <div class="tl-meta"><span class="tl-company">Our Education for Investment</span> · Aug 2021 – Aug 2022 · Cairo, Egypt</div>
+        <ul class="tl-bullets">
+          <li>K-12 platform serving 25K+ students, 50K+ parents, 3K+ teachers</li>
+          <li>Exam management system — 6,250+ daily active hours</li>
+          <li>Reduced page load 35% via DB query optimization</li>
+          <li>RBAC for multi-school, multi-tenant architecture</li>
+        </ul>
+        <div class="tl-tech">
+          <span>Laravel</span><span>Python</span><span>MySQL</span><span>Redis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Squad Lead</h3>
+        <div class="tl-meta"><span class="tl-company">TopQdrat Platform</span></div>
+        <ul class="tl-bullets">
+          <li>Online exam prep platform for Qudrat & Tahsili exams</li>
+          <li>Architected course management, mock exams, and progress tracking</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Early Career</h3>
+        <div class="tl-meta">2017 – 2021</div>
+        <p class="tl-desc">Kite Agency · DevoJet · Lodex-Solutions · Codex — REST APIs, server deployments (Nginx, Supervisor), DB design & optimization.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider gutter">
+
+<!-- EDUCATION -->
+<section id="education" class="gutter">
+  <div class="section-label">Education</div>
+  <h2>Academic Background</h2>
+  <div class="edu-card">
+    <h3>BSc Computer & Information Sciences</h3>
+    <p>Helwan University, Cairo</p>
+    <p>Graduated 2021</p>
+  </div>
+  <div style="margin-top: 20px;">
+    <div class="section-label" style="margin-top: 0;">Languages</div>
+    <div class="skill-tags" style="margin-top: 8px;">
+      <span class="skill-tag">Arabic (Native)</span>
+      <span class="skill-tag">English (Intermediate)</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner gutter">
+    <div>
+      <div class="footer-brand">Yahia Abdullah</div>
+      <p class="footer-tagline">Senior Backend Engineer & Software Architect building scalable distributed systems.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/yahia-abdullah-981b46113" target="_blank" rel="noopener">LinkedIn</a>
+      <span>yahiafcih2014@gmail.com</span>
+      <span>+20 115 651 0548</span>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 Yahia Abdullah
+    </div>
+  </div>
+</footer>
